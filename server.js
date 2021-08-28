@@ -11,7 +11,7 @@ const PORT = process.env.PORT;
 const server = express();
 server.use(cors());
 server.use(express.json());
-const { getBooksHandler, addBookHandler, deleteBookHandler } = require('./modules/crud')
+const { getBooksHandler, addBookHandler, deleteBookHandler, updateBookHandler } = require('./modules/crud')
 //books database
 mongoose.connect(`${process.env.MONGODB_LINK}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -26,6 +26,8 @@ server.post('/addbook', addBookHandler);
 //localhost:3001/deletebook/:bookId/${bookID}?email=userEmail
 server.delete('/deletebook/:bookId', deleteBookHandler);
 
+//localhost:3001/updatebook/:bookId/${bookID}?email=userEmail
+server.put('/updatebook/:bookId', updateBookHandler);
 
 //listening on
 server.listen(PORT, () => {
