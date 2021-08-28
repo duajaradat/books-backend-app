@@ -57,16 +57,27 @@ async function deleteBookHandler(req, res) {
     })
 }
 
-async function updateBookHandler(req, res) {
+function updateBookHandler(req, res) {
     const { email, title, description } = req.body;
     const bookID = req.params.bookId;
-    BooksModel.find({ _id: bookID }, function (err, resultData) {
-        if (err) {
-            console.log('ERROR');
-        } else {
-            console.log(resultData);
-            // res.send(resultData);
-        }
+    console.log("yala")
+    BooksModel.findOne({ _id: bookID }, function (err, resultData) {
+        resultData.email = email;
+        resultData.title = title;
+        resultData.description = description;
+        resultData.save()
+            .then(() => {
+                BooksModel.find({ email }, function (err, resultData) {
+                    if (err) {
+                        console.log('ERROR');
+                    } else {
+                        res.send(resultData);
+                    }
+                })
+            }).catch(error => {
+                console.log('Error in saving')
+            })
+
     })
 
 
