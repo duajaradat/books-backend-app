@@ -85,5 +85,5 @@ function updateBookHandler(req, res) {
 
 
 
-// mongodb://duajaradat:0000@duadatabases-shard-00-00.y86nh.mongodb.net:27017,duadatabases-shard-00-01.y86nh.mongodb.net:27017,duadatabases-shard-00-02.y86nh.mongodb.net:27017/bookappdata?ssl=true&replicaSet=atlas-5gulo3-shard-0&authSource=admin&retryWrites=true&w=majority
+
 module.exports = { getBooksHandler, addBookHandler, deleteBookHandler, updateBookHandler }
