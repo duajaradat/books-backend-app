@@ -13,7 +13,7 @@ server.use(cors());
 server.use(express.json());
 const { getBooksHandler, addBookHandler, deleteBookHandler } = require('./modules/crud')
 //books database
-mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`${process.env.MONGODB_LINK}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //localhost:3001/books?email=duajaradat164@gmail.com
 server.get('/books', getBooksHandler);
