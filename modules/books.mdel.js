@@ -42,7 +42,7 @@ function seedDataCollection() {
     emailGmail.save();
 }
 
-// seedDataCollection();
+seedDataCollection();
 
 
 module.exports = { BooksModel }
